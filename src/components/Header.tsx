@@ -40,7 +40,11 @@ function PlusIcon() {
   )
 }
 
-function Header() {
+type HeaderProps = {
+  isGuidePage: boolean
+}
+
+function Header({ isGuidePage }: HeaderProps) {
   return (
     <header className="flex min-h-13 items-center gap-6 rounded-lg border border-border bg-background px-6 py-2.5 text-text shadow-sm">
       <a aria-label="Money Log 홈" className="shrink-0" href="#dashboard">
@@ -66,7 +70,16 @@ function Header() {
         </a>
       </nav>
 
-      <time className="ml-auto shrink-0 text-sm text-text-muted">{formatToday()}</time>
+      <div className="ml-auto flex shrink-0 items-center gap-3">
+        <time className="text-sm text-text-muted">{formatToday()}</time>
+        <a
+          aria-current={isGuidePage ? 'page' : undefined}
+          className={`rounded-md border px-3 py-1.5 text-xs font-semibold ${isGuidePage ? 'border-primary bg-primary-light text-primary' : 'border-border text-text hover:bg-surface'}`}
+          href="#design-guide"
+        >
+          디자인 가이드
+        </a>
+      </div>
     </header>
   )
 }
