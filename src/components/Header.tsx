@@ -42,9 +42,10 @@ function PlusIcon() {
 
 type HeaderProps = {
   isGuidePage: boolean
+  onOpenTransactionModal: () => void
 }
 
-function Header({ isGuidePage }: HeaderProps) {
+function Header({ isGuidePage, onOpenTransactionModal }: HeaderProps) {
   return (
     <header className="flex min-h-13 items-center gap-6 rounded-lg border border-border bg-background px-6 py-2.5 text-text shadow-sm">
       <a aria-label="Money Log 홈" className="shrink-0" href="#dashboard">
@@ -64,10 +65,14 @@ function Header({ isGuidePage }: HeaderProps) {
           <ListIcon />
           거래 내역
         </a>
-        <a className="flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold hover:bg-surface" href="#new-transaction">
+        <button
+          className="flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          onClick={onOpenTransactionModal}
+          type="button"
+        >
           <PlusIcon />
           지출 등록
-        </a>
+        </button>
       </nav>
 
       <div className="ml-auto flex shrink-0 items-center gap-3">
