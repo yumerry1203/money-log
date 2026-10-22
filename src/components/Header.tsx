@@ -1,4 +1,4 @@
-import logo from '../assets/money-log-logo.png'
+import logo from '../assets/money-log-wordmark-3d.png'
 
 const weekDays = ['일', '월', '화', '수', '목', '금', '토']
 
