@@ -1,4 +1,4 @@
-import logo from '../assets/money-log-wordmark-3d.png'
+import logo from '../assets/money-log-logo.png'
 
 const weekDays = ['일', '월', '화', '수', '목', '금', '토']
 
@@ -41,11 +41,11 @@ function PlusIcon() {
 }
 
 type HeaderProps = {
-  isGuidePage: boolean
+  activePage: 'dashboard' | 'transactions' | 'design-guide'
   onOpenTransactionModal: () => void
 }
 
-function Header({ isGuidePage, onOpenTransactionModal }: HeaderProps) {
+function Header({ activePage, onOpenTransactionModal }: HeaderProps) {
   return (
     <header className="flex min-h-13 items-center gap-6 rounded-lg border border-border bg-background px-6 py-2.5 text-text shadow-sm">
       <a aria-label="Money Log 홈" className="shrink-0" href="#dashboard">
@@ -54,14 +54,18 @@ function Header({ isGuidePage, onOpenTransactionModal }: HeaderProps) {
 
       <nav aria-label="주요 메뉴" className="flex items-center gap-1">
         <a
-          aria-current="page"
-          className="flex items-center gap-2 rounded-md bg-primary-light px-4 py-2 text-sm font-semibold"
+          aria-current={activePage === 'dashboard' ? 'page' : undefined}
+          className={`flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold ${activePage === 'dashboard' ? 'bg-primary-light' : 'hover:bg-surface'}`}
           href="#dashboard"
         >
           <HomeIcon />
           대시보드
         </a>
-        <a className="flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold hover:bg-surface" href="#transactions">
+        <a
+          aria-current={activePage === 'transactions' ? 'page' : undefined}
+          className={`flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold ${activePage === 'transactions' ? 'bg-primary-light' : 'hover:bg-surface'}`}
+          href="#transactions"
+        >
           <ListIcon />
           거래 내역
         </a>
@@ -78,8 +82,8 @@ function Header({ isGuidePage, onOpenTransactionModal }: HeaderProps) {
       <div className="ml-auto flex shrink-0 items-center gap-3">
         <time className="text-sm text-text-muted">{formatToday()}</time>
         <a
-          aria-current={isGuidePage ? 'page' : undefined}
-          className={`rounded-md border px-3 py-1.5 text-xs font-semibold ${isGuidePage ? 'border-primary bg-primary-light text-primary' : 'border-border text-text hover:bg-surface'}`}
+          aria-current={activePage === 'design-guide' ? 'page' : undefined}
+          className={`rounded-md border px-3 py-1.5 text-xs font-semibold ${activePage === 'design-guide' ? 'border-primary bg-primary-light text-primary' : 'border-border text-text hover:bg-surface'}`}
           href="#design-guide"
         >
           디자인 가이드

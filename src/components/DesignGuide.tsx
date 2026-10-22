@@ -51,15 +51,15 @@ function DesignGuide() {
             <Button disabled>등록하기</Button>
           </Example>
           <Example title="지출">
-            <Button variant="secondary">지출하기</Button>
+            <Button variant="secondary">지출</Button>
             <Button disabled variant="secondary">
-              지출하기
+              지출
             </Button>
           </Example>
           <Example title="수입">
-            <Button variant="income">수입하기</Button>
+            <Button variant="income">수입</Button>
             <Button disabled variant="income">
-              수입하기
+              수입
             </Button>
           </Example>
           <Example title="보조">
