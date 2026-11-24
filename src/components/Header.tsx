@@ -2,15 +2,15 @@ import logo from '../assets/money-log-logo.png'
 
 const weekDays = ['일', '월', '화', '수', '목', '금', '토']
 
-function formatToday() {
+const formatToday = () => {
   const today = new Date()
 
   return `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일 (${weekDays[today.getDay()]})`
 }
 
-function HomeIcon() {
+const HomeIcon = () => {
   return (
-    <svg aria-hidden="true" className="size-5" fill="none" viewBox="0 0 24 24">
+    <svg aria-hidden="true" className="size-2" fill="none" viewBox="0 0 24 24">
       <path
         d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10Z"
         stroke="currentColor"
@@ -23,18 +23,18 @@ function HomeIcon() {
   )
 }
 
-function ListIcon() {
+const ListIcon = () => {
   return (
-    <svg aria-hidden="true" className="size-5" fill="none" viewBox="0 0 24 24">
+    <svg aria-hidden="true" className="size-2" fill="none" viewBox="0 0 24 24">
       <path d="M9 6h11M9 12h11M9 18h11" stroke="currentColor" strokeLinecap="round" strokeWidth="2" />
       <path d="M4 6h.01M4 12h.01M4 18h.01" stroke="currentColor" strokeLinecap="round" strokeWidth="3" />
     </svg>
   )
 }
 
-function PlusIcon() {
+const PlusIcon = () => {
   return (
-    <svg aria-hidden="true" className="size-5" fill="none" viewBox="0 0 24 24">
+    <svg aria-hidden="true" className="size-2" fill="none" viewBox="0 0 24 24">
       <path d="M12 5v14M5 12h14" stroke="currentColor" strokeLinecap="round" strokeWidth="2" />
     </svg>
   )
@@ -45,17 +45,17 @@ type HeaderProps = {
   onOpenTransactionModal: () => void
 }
 
-function Header({ activePage, onOpenTransactionModal }: HeaderProps) {
+const Header = ({ activePage, onOpenTransactionModal }: HeaderProps) => {
   return (
-    <header className="flex min-h-13 items-center gap-6 rounded-lg border border-border bg-background px-6 py-2.5 text-text shadow-sm">
+    <header className="flex min-h-[5.2rem] items-center gap-[2.4rem] rounded-lg border border-border bg-background px-[2.4rem] py-1 text-text shadow-sm">
       <a aria-label="Money Log 홈" className="shrink-0" href="#dashboard">
-        <img alt="Money Log" className="w-36" src={logo} />
+        <img alt="Money Log" className="w-[14.4rem]" src={logo} />
       </a>
 
-      <nav aria-label="주요 메뉴" className="flex items-center gap-1">
+      <nav aria-label="주요 메뉴" className="flex items-center gap-[0.4rem]">
         <a
           aria-current={activePage === 'dashboard' ? 'page' : undefined}
-          className={`flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold ${activePage === 'dashboard' ? 'bg-primary-light' : 'hover:bg-surface'}`}
+          className={`flex items-center gap-[0.8rem] rounded-md px-[1.6rem] py-[0.8rem] text-sm font-semibold ${activePage === 'dashboard' ? 'bg-primary-light' : 'hover:bg-surface'}`}
           href="#dashboard"
         >
           <HomeIcon />
@@ -63,14 +63,14 @@ function Header({ activePage, onOpenTransactionModal }: HeaderProps) {
         </a>
         <a
           aria-current={activePage === 'transactions' ? 'page' : undefined}
-          className={`flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold ${activePage === 'transactions' ? 'bg-primary-light' : 'hover:bg-surface'}`}
+          className={`flex items-center gap-[0.8rem] rounded-md px-[1.6rem] py-[0.8rem] text-sm font-semibold ${activePage === 'transactions' ? 'bg-primary-light' : 'hover:bg-surface'}`}
           href="#transactions"
         >
           <ListIcon />
           거래 내역
         </a>
         <button
-          className="flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          className="flex items-center gap-[0.8rem] rounded-md px-[1.6rem] py-[0.8rem] text-sm font-semibold hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           onClick={onOpenTransactionModal}
           type="button"
         >
@@ -79,11 +79,11 @@ function Header({ activePage, onOpenTransactionModal }: HeaderProps) {
         </button>
       </nav>
 
-      <div className="ml-auto flex shrink-0 items-center gap-3">
+      <div className="ml-auto flex shrink-0 items-center gap-[1.2rem]">
         <time className="text-sm text-text-muted">{formatToday()}</time>
         <a
           aria-current={activePage === 'design-guide' ? 'page' : undefined}
-          className={`rounded-md border px-3 py-1.5 text-xs font-semibold ${activePage === 'design-guide' ? 'border-primary bg-primary-light text-primary' : 'border-border text-text hover:bg-surface'}`}
+          className={`rounded-md border px-[1.2rem] py-[0.6rem] text-xs font-semibold ${activePage === 'design-guide' ? 'border-primary bg-primary-light text-primary' : 'border-border text-text hover:bg-surface'}`}
           href="#design-guide"
         >
           디자인 가이드

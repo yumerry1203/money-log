@@ -18,34 +18,34 @@ const categories = [
   { label: '교통', value: 'transport' },
 ]
 
-function GuideSection({ children, description, title }: GuideSectionProps) {
+const GuideSection = ({ children, description, title }: GuideSectionProps) => {
   return (
-    <section className="w-full bg-background p-5">
-      <div className="mb-5">
+    <section className="w-full bg-background p-2">
+      <div className="mb-2">
         <h2 className="text-lg font-bold text-text">{title}</h2>
-        <p className="mt-1 text-sm text-text-muted">{description}</p>
+        <p className="mt-[0.4rem] text-sm text-text-muted">{description}</p>
       </div>
       {children}
     </section>
   )
 }
 
-function Example({ children, title }: ExampleProps) {
+const Example = ({ children, title }: ExampleProps) => {
   return (
-    <div className="grid content-start gap-3 rounded-lg bg-surface p-4">
+    <div className="grid content-start gap-[1.2rem] rounded-lg bg-surface p-[1.6rem]">
       <p className="text-sm font-semibold text-text">{title}</p>
       {children}
     </div>
   )
 }
 
-function DesignGuide() {
+const DesignGuide = () => {
   return (
-    <div className="grid w-full max-w-7xl gap-5 py-8">
-      <h1 className="p-5 mt-1 text-3xl font-bold text-text">공통 컴포넌트 가이드</h1>
+    <div className="grid w-full max-w-7xl gap-2 py-[3.2rem]">
+      <h1 className="mt-[0.4rem] p-2 text-3xl font-bold text-text">공통 컴포넌트 가이드</h1>
 
       <GuideSection description="브랜드, 지출, 수입, 보조 버튼의 기본·hover·비활성 상태를 확인한다." title="버튼">
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-[1.6rem] sm:grid-cols-2 xl:grid-cols-4">
           <Example title="브랜드">
             <Button>등록하기</Button>
             <Button disabled>등록하기</Button>
@@ -72,7 +72,7 @@ function DesignGuide() {
       </GuideSection>
 
       <GuideSection description="기본, 입력됨, 오류, 비활성 상태를 제공한다. 빈 입력 필드를 클릭하면 focus 상태를 확인할 수 있다." title="입력 필드">
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-[1.6rem] sm:grid-cols-2 xl:grid-cols-4">
           <Example title="기본 / 포커스">
             <Input label="금액" placeholder="금액을 입력하세요." />
           </Example>
@@ -89,7 +89,7 @@ function DesignGuide() {
       </GuideSection>
 
       <GuideSection description="여러 줄의 보조 내용을 입력할 때 사용한다. 빈 텍스트 영역을 클릭하면 focus 상태를 확인할 수 있다." title="텍스트 영역">
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-[1.6rem] sm:grid-cols-2 xl:grid-cols-4">
           <Example title="기본 / 포커스">
             <Textarea label="메모" placeholder="메모를 입력하세요. (선택)" />
           </Example>
@@ -106,7 +106,7 @@ function DesignGuide() {
       </GuideSection>
 
       <GuideSection description="카테고리처럼 정해진 항목 중 하나를 선택할 때 사용한다." title="Select Box">
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-[1.6rem] sm:grid-cols-2 xl:grid-cols-3">
           <Example title="기본 / 포커스">
             <Select label="카테고리" options={categories} placeholder="카테고리를 선택하세요." />
           </Example>
@@ -120,7 +120,7 @@ function DesignGuide() {
       </GuideSection>
 
       <GuideSection description="Checkbox는 여러 항목을 선택할 때, Radio는 하나의 항목만 선택할 때 사용한다." title="선택 컴포넌트">
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-[1.6rem] md:grid-cols-2">
           <Example title="Checkbox">
             <Checkbox label="다음에도 이 내용으로 계속 등록하기" />
             <Checkbox defaultChecked label="다음에도 이 내용으로 계속 등록하기" />
@@ -135,7 +135,7 @@ function DesignGuide() {
       </GuideSection>
 
       <GuideSection description="거래 날짜를 입력할 때 사용한다. 빈 날짜 필드를 클릭하면 브라우저 기본 달력과 focus 상태를 확인할 수 있다." title="Datepicker">
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-[1.6rem] sm:grid-cols-2 xl:grid-cols-4">
           <Example title="기본 / 포커스">
             <DatePicker label="거래 날짜" />
           </Example>

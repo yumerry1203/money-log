@@ -14,10 +14,10 @@ const variantClassNames: Record<ButtonVariant, string> = {
   ghost: 'border border-border bg-background text-text hover:bg-surface disabled:bg-surface disabled:text-text-muted',
 }
 
-function Button({ children, className = '', disabled, type = 'button', variant = 'primary', ...props }: ButtonProps) {
+const Button = ({ children, className = '', disabled, type = 'button', variant = 'primary', ...props }: ButtonProps) => {
   return (
     <button
-      className={`inline-flex h-10 items-center justify-center rounded-md px-4 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed ${variantClassNames[variant]} ${className}`}
+      className={`inline-flex h-4 items-center justify-center rounded-md px-[1.6rem] text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed ${variantClassNames[variant]} ${className}`}
       disabled={disabled}
       type={type}
       {...props}

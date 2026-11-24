@@ -38,7 +38,7 @@ const incomeCategories = [
   { label: '기타', value: 'other-income' },
 ]
 
-function createInitialValues(): TransactionFormValues {
+const createInitialValues = (): TransactionFormValues => {
   const today = new Date()
   const month = String(today.getMonth() + 1).padStart(2, '0')
   const day = String(today.getDate()).padStart(2, '0')
@@ -54,15 +54,15 @@ function createInitialValues(): TransactionFormValues {
   }
 }
 
-function CloseIcon() {
+const CloseIcon = () => {
   return (
-    <svg aria-hidden="true" className="size-5" fill="none" viewBox="0 0 24 24">
+    <svg aria-hidden="true" className="size-2" fill="none" viewBox="0 0 24 24">
       <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" strokeLinecap="round" strokeWidth="2" />
     </svg>
   )
 }
 
-function TransactionModal({ isOpen, onClose, onSubmit }: TransactionModalProps) {
+const TransactionModal = ({ isOpen, onClose, onSubmit }: TransactionModalProps) => {
   const [values, setValues] = useState<TransactionFormValues>(createInitialValues)
   const [errors, setErrors] = useState<FormErrors>({})
   const closeButtonRef = useRef<HTMLButtonElement>(null)
@@ -171,7 +171,7 @@ function TransactionModal({ isOpen, onClose, onSubmit }: TransactionModalProps) 
     <div
       aria-labelledby="transaction-modal-title"
       aria-modal="true"
-      className="fixed inset-0 z-50 grid place-items-center bg-text/35 p-4"
+      className="fixed inset-0 z-50 grid place-items-center bg-text/35 p-[1.6rem]"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
           handleClose()
@@ -180,21 +180,21 @@ function TransactionModal({ isOpen, onClose, onSubmit }: TransactionModalProps) 
       role="dialog"
     >
       <form
-        className="max-h-[calc(100vh-2rem)] w-full max-w-2xl overflow-y-auto rounded-xl border border-border bg-background p-6 shadow-xl"
+        className="max-h-[calc(100vh-3.2rem)] w-full max-w-2xl overflow-y-auto rounded-xl border border-border bg-background p-[2.4rem] shadow-xl"
         onKeyDown={handleKeyDown}
         onSubmit={handleSubmit}
         ref={dialogRef}
       >
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex items-start justify-between gap-[1.6rem]">
           <div>
             <h2 className="text-2xl font-bold text-text" id="transaction-modal-title">
               거래 등록
             </h2>
-            <p className="mt-1 text-sm text-text-muted">새로운 거래 내역을 추가한다.</p>
+            <p className="mt-[0.4rem] text-sm text-text-muted">새로운 거래 내역을 추가한다.</p>
           </div>
           <button
             aria-label="거래 등록 모달 닫기"
-            className="inline-flex size-10 items-center justify-center rounded-md text-text hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            className="inline-flex size-4 items-center justify-center rounded-md text-text hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             onClick={handleClose}
             ref={closeButtonRef}
             type="button"
@@ -203,15 +203,15 @@ function TransactionModal({ isOpen, onClose, onSubmit }: TransactionModalProps) 
           </button>
         </div>
 
-        <fieldset className="mt-6">
+        <fieldset className="mt-[2.4rem]">
           <legend className="text-sm font-medium text-text">거래 유형</legend>
-          <div className="mt-2 grid grid-cols-2 gap-3">
+          <div className="mt-[0.8rem] grid grid-cols-2 gap-[1.2rem]">
             <Radio checked={values.type === 'expense'} label="지출" name="transaction-type" onChange={() => changeType('expense')} value="expense" />
             <Radio checked={values.type === 'income'} label="수입" name="transaction-type" onChange={() => changeType('income')} value="income" />
           </div>
         </fieldset>
 
-        <div className="mt-5 grid gap-5 sm:grid-cols-2">
+        <div className="mt-2 grid gap-2 sm:grid-cols-2">
           <DatePicker error={errors.date} label="거래 날짜" onChange={(event) => updateValue('date', event.target.value)} value={values.date} />
           <Select
             error={errors.category}
@@ -238,15 +238,15 @@ function TransactionModal({ isOpen, onClose, onSubmit }: TransactionModalProps) 
           />
         </div>
 
-        <div className="mt-5">
+        <div className="mt-2">
           <Textarea label="메모" onChange={(event) => updateValue('memo', event.target.value)} placeholder="메모를 입력하세요. (선택)" value={values.memo} />
         </div>
 
-        <div className="mt-5">
+        <div className="mt-2">
           <Checkbox checked={values.repeat} label="다음에도 이 내용으로 계속 등록하기" onChange={(event) => updateValue('repeat', event.target.checked)} />
         </div>
 
-        <div className="mt-6 flex justify-end gap-3 border-t border-border pt-5">
+        <div className="mt-[2.4rem] flex justify-end gap-[1.2rem] border-t border-border pt-2">
           <Button onClick={handleClose} variant="ghost">
             취소
           </Button>
